@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="shortcut icon" href="https://ik.imagekit.io/ht7s3mc6n/spotifyfevicon.jpg?updatedAt=1704818699051"
+        type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- <script src="spotify.js"></script> -->
+    
+       
+</head>
+<body>
+    <div class="spotifyLogin">
+          <div class="topBar">
+            <a href="">
+                <img src="https://ik.imagekit.io/ht7s3mc6n/image.png?updatedAt=1705494098575">
+            </a>
+          </div>
+
+          <div class="MainLogin">
+             <div class="loginBlock">
+                <div class="headingTag">
+                    <span>Log in to Spotify</span>
+                </div>
+                <div class="rederror" id="errordisplay">
+                  <div class="incorrectImg">
+                    <img src="https://ik.imagekit.io/ht7s3mc6n/Incorrect.svg?updatedAt=1706520065856">
+                  </div>
+                  <div class="incorrectText">
+                  <p>Incorrect username or password.</p>
+                </div>
+                </div>
+          
+          <div class="appDivs">
+              <div class="eachicon">
+                    <div class="imageIcon">
+                        <img src="https://ik.imagekit.io/ht7s3mc6n/Google-logo.png?updatedAt=1705918210498">
+                    </div>
+                    <div class="textInDiv">
+                        Continue with Google
+                    </div>
+              </div>
+              <div class="eachicon">
+                <div class="imageIcon">
+                    <img src="https://ik.imagekit.io/ht7s3mc6n/Facebook-Logo.png?updatedAt=1705918233718">
+                </div>
+                <div class="textInDiv">
+                    Continue with Facebook
+                </div>
+          </div>
+          <div class="eachicon">
+            <div class="imageIcon">
+                <img src="https://ik.imagekit.io/ht7s3mc6n/Apple-logo.png?updatedAt=1705920867438">
+            </div>
+            <div class="textInDiv">
+                Continue with Apple
+            </div>
+      </div>
+      <div class="eachicon">
+        <div class="textInDiv">
+            Continue with phone Number
+        </div>
+  </div>
+          </div>
+          </div>
+          <div class="userDetails">
+            <form id="loginForm" onsubmit="onLogin()">
+          <div class="detailsBlock">
+            <div class="namingBlock">
+              <div class="nameEnter">
+                   <p>Email or username</p>
+              </div>
+              <div class="textBox" >
+
+                <input type="email" id="emailVal" oninput="validateForm()" onblur="myFunctionemail()" placeholder="Email or username">
+                        <p class="error-message" id="emailError"></p>
+                <div class="hideDiv" id="hideDiv">
+                  <div class="errorImg">
+                  <img src="https://ik.imagekit.io/ht7s3mc6n/erroricon.png?updatedAt=1706334408026">
+                  </div>
+                  <div class="errorMessage">
+                  <p>Please enter your Spotify username or email address.</p>
+                  </div>
+                  </div>
+              </div>
+              </div>
+              <div class="passwordBlock">
+                <div class="passwordEnter">
+                     <p>Password</p>
+                </div> 
+                <div class="textBoxPass" id="password-input">
+                    <input type="password" class="password-input" id="password" onblur="myFunctionemail()" onmouseover="showInfoDiv()" onmouseout="hideInfoDiv()" oninput="validateFormPass()" placeholder="Password" >
+                   <div class="designeye">
+                     <i id="showPasswordIcon" class="fas fa-eye icon" onclick="togglePasswordVisibility('password', 'showPasswordIcon', 'hidePasswordIcon')"></i>
+                     </div>
+                     <div class="designeye">
+                    <i id="hidePasswordIcon" class="fas fa-eye-slash icon" style="display: none;" onclick="togglePasswordVisibility('password', 'showPasswordIcon', 'hidePasswordIcon')"></i>
+                      </div>   
+                        </div>
+                         <div id="passwordWarning" class="passwordErrorMsg">
+                          <div class="errorImg">
+                            <img src="https://ik.imagekit.io/ht7s3mc6n/erroricon.png?updatedAt=1706334408026">
+                            </div>
+                          <div class="errorMessage">
+                            <p>Please enter your password.</p>
+                            </div>
+                        </div>
+                </div>
+          </div>
+          <div class="rememberButton">
+            <div class="onOffButton">
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
+              </div>
+              <div class="rememberText">
+                <p>Remember me</p>
+              </div>
+          </div>
+          <div class="loginbutton"  >
+               <button type="submit" onclick="validateLoginButton()" value="submit">Log in</button>
+          </div>
+          <div class="forgotPassword">
+              <p>Forgot your password?</p>
+          </div>
+          </form>
+          </div>
+          <div class="donthaveAccount">
+            <div>
+            <p>Don't have an account?</p>
+            </div>
+            <div>
+            <span>Sign up for Spotify</span> 
+            </div>
+          </div>
+        </div>
+        <div class="bottomBlock">
+             <p>This site is protected by reCAPTCHA and the Google <span>Privacy Policy</span> and <span>Terms of Service</span> apply.</p>
+        </div>
+    </div>
+</body>
+<script>
+
+  //validating Email
+     function validateLoginButton() {
+            var emailField = document.getElementById('emailVal');
+            var passwordField = document.getElementById('password');
+
+            // Basic email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailField.value.trim())) {
+                alert('Invalid email format');
+                return;
+            }
+              
+
+            var password = passwordField.value.trim();
+            var conditionsMet = (
+                password.length >= 8 &&
+                /[a-z]/.test(password) &&
+                /[A-Z]/.test(password) &&
+                /\d/.test(password) &&
+                /[@$!%*?&]/.test(password)
+            );
+
+            if (!conditionsMet) {
+                alert('Password is not in given conditions !');
+                return;
+            }
+            
+            // If both email and password pass validation, show success alert
+            alert('Login Successful !\nEmail: ' + emailField.value + '\nPassword: ' + passwordField.value);
+        }
+
+
+       // show password warning when mouseover on password input
+         function showInfoDiv() {
+            var infoDiv = document.getElementById('passwordWarning');
+            infoDiv.style.display = 'flex';
+        }
+        // hide password warning when mouseover on password input
+         function hideInfoDiv() {
+            var infoDiv = document.getElementById('passwordWarning');
+            infoDiv.style.display = 'none';
+        }
+
+    // Toggle password Visibility when condition is not satisfied
+        function togglePasswordVisibility(passwordFieldId, showIconId, hideIconId) {
+            var passwordField = document.getElementById(passwordFieldId);
+            var showIcon = document.getElementById(showIconId);
+            var hideIcon = document.getElementById(hideIconId);
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                showIcon.style.display = 'none';
+                hideIcon.style.display = 'inline';
+                showIcon.classList.remove('fa-eye');
+                showIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                showIcon.style.display = 'inline';
+                hideIcon.style.display = 'none';
+                // Remove 'fa-eye-slash' class and add 'fa-eye' class
+                hideIcon.classList.remove('fa-eye-slash');
+                hideIcon.classList.add('fa-eye');
+            }
+        } 
+        //hide the div 
+      document.addEventListener("DOMContentLoaded", function() {
+         var myDiv = document.getElementById("passwordWarning");
+        myDiv.style.display = "none";
+            });
+
+            //validating password
+        document.getElementById('password').addEventListener('input', function() {
+            var password = this.value;
+            var passwordWarning = document.getElementById('passwordWarning');
+
+            // Define your password conditions
+            var conditionsMet = (
+                password.length >= 8 &&
+                /[a-z]/.test(password) &&
+                /[A-Z]/.test(password) &&
+                /\d/.test(password) &&
+                /[@$!%*?&]/.test(password)
+            );
+
+            // Update div visibility based on password conditions
+            passwordWarning.style.display = conditionsMet ? 'none' : 'flex';
+        });
+
+        // Hide the div when the page is loaded
+  document.addEventListener("DOMContentLoaded", function() {
+      var myDiv = document.getElementById("hideDiv");
+      myDiv.style.display = "none";
+    });
+
+    //validating both email and password display error message when incorrect
+      function validateForm(){
+      event.preventDefault()
+      var email = document.getElementById('emailVal').value;
+       var password = document.getElementById('password').value;
+
+       if (email.trim() === ''){
+      document.getElementById("hideDiv").style.display = "flex";
+      }
+      else{
+      document.getElementById("hideDiv").style.display = "none";
+      } 
+      }
+     
+    
+  //validating and displaying error message
+    function validateFormPass(){
+      event.preventDefault()
+      var email = document.getElementById('emailVal').value;
+    var password = document.getElementById('password').value;
+
+    if (password.trim() === ''){
+      document.getElementById("passwordErrorMsg").style.display = "flex";
+    }
+    else{
+      document.getElementById("passwordErrorMsg").style.display = "none";
+    } 
+    }
+     
+    
+ 
+  
+  // function togglePasswordVisibility() {
+  //     var passwordInput = document.querySelector('.password-input');
+  //     var toggleIcon = document.querySelector('.toggle-password');
+
+  //     if (passwordInput.type === 'password') {
+  //       passwordInput.type = 'text';
+  //       toggleIcon.classList.remove('fa-solid fa-eye-slash');
+  //       toggleIcon.classList.add('fa-solid fa-eye');
+  //     } else {
+  //       passwordInput.type = 'password';
+  //       toggleIcon.classList.remove('fa-solid fa-eye');
+  //       toggleIcon.classList.add('fa-solid fa-eye-slash');
+  //     }
+  //   }  
+    
+    function onLogin(){
+      event.preventDefault()
+      var email = document.getElementById('emailVal').value;
+    var password = document.getElementById('password').value;
+
+    if (email.trim() === '' && password.trim() === ''){
+      document.getElementById("errordisplay").style.display = "flex";
+    }
+    else{
+      document.getElementById("errordisplay").style.display = "none";
+    } 
+    }
+  
+  
+  document.addEventListener("DOMContentLoaded", function() {
+      // Hide the div when the page is loaded
+      var myDiv = document.getElementById("errordisplay");
+      myDiv.style.display = "none";
+    });
+</script>
+</html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script>
+            function openExternalFile() {
+                var externalFileUrl = 'index2.html';
+                // window.open(externalFileUrl, '_blank');
+                window.location.href = externalFileUrl;
+            }
+        </script>
 </head>
 
 <body>
@@ -73,9 +81,10 @@
                     <div class="legal">Privacy Center</div>
                     <div class="legal">Privacy Policy</div>
                     <div class="legal">Cookies</div>
-                    <div class="legal">About Ads</div>
+                    
                 </div>
                 <div class="aboutads">
+                    <div class="legal">About Ads</div>
                     <div class="legal">Accessibility</div>
                 </div>
                 <div class="cookies">
@@ -104,15 +113,17 @@
                             <a href="">Sign up</a>
                         </li>
                     </ul>
-                    <button type="button">Log in</button>
+                    <button type="button" onclick="openExternalFile()">Log in</button>
+                    <div id="externalContent"></div>
                 </div>
             </div>
 
-            <div class="middlebar">
-
-                
+            <div class="middlebar">                
                 <div class="MiddleBlock1">
-                    <h2>Spotify Playlists</h2>
+                    <div class="spotifyPlaylist">
+                        <h2>Spotify Playlists</h2>
+                    </div>
+                    <div class="mainCards">
                     <div class="displayCard">
                         <div class="displayImage">
                             <img src="https://ik.imagekit.io/ht7s3mc6n/prabhas.jpg?updatedAt=1704887135401" alt="Avatar"
@@ -185,12 +196,12 @@
                             <p>Balasubrahmanayam, S. Janaki</p>
                         </div>
                     </div>
+                  </div>
                 </div>
 
                 <div class="MiddleBlock1">
-                    <div class="Heading">
-                       <h2>Favourites</h2>
-                    </div>
+                   
+                    <div class="mainCards">
                     <div class="displayCard">
                         <img src="https://ik.imagekit.io/ht7s3mc6n/vikramasimha.jpg?updatedAt=1704948076682"
                             alt="Avatar" style="width:100%">
@@ -256,10 +267,12 @@
                             <p>Jeans srinivas, Gopika Poornima</p>
                         </div>
                     </div>
+                    </div>
                     
                 </div>
             </div>
             <div class="navigations">
+                <div class="threeBlocks">
                 <div class="block">
                     <ul>
                         <span>Company</span>
@@ -285,6 +298,7 @@
                         <p>support</p>
                         <p>Free Mobile App</p>
                     </ul>
+                </div>
                 </div>
                 <div class="AppIcons">
                     <div class="sideicons">

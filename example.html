@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Validation</title>
+    <style>
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-alert.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password">
+
+    <button onclick="validateLogin()">Login</button>
+
+    <div id="customAlert" class="custom-alert"></div>
+
+    <script>
+        function validateLogin() {
+            var emailField = document.getElementById('email');
+            var passwordField = document.getElementById('password');
+
+            // Password conditions
+            var password = passwordField.value.trim();
+            var conditionsMet = (
+                password.length >= 8 &&
+                /[a-z]/.test(password) &&
+                /[A-Z]/.test(password) &&
+                /\d/.test(password) &&
+                /[@$!%*?&]/.test(password)
+            );
+
+            if (!conditionsMet) {
+                showCustomAlert('Password must meet the following conditions:\n' +
+                    '- At least 8 characters\n' +
+                    '- Contains at least one lowercase letter\n' +
+                    '- Contains at least one uppercase letter\n' +
+                    '- Contains at least one digit\n' +
+                    '- Contains at least one special character [@ $ ! % * ? &]');
+                return;
+            }
+
+            // If both email and password pass validation, show success alert
+            showCustomAlert('Login Successful!\nEmail: ' + emailField.value + '\nPassword: ' + passwordField.value);
+        }
+
+        function showCustomAlert(message) {
+            var customAlert = document.getElementById('customAlert');
+            customAlert.textContent = message;
+            customAlert.classList.add('show');
+
+            // Hide the alert after 3 seconds (adjust as needed)
+            setTimeout(function () {
+                customAlert.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
